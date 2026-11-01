@@ -19,8 +19,22 @@
     --muted:#666E7D;
     --accent:#2554E0;
     --accent-soft:#EAF0FF;
+    --accent-dark:#1c42b8;
+    --success:#10A561;
     --font:'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     --maxw:680px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#0F1117;
+      --surface:#161B22;
+      --border:#30363D;
+      --text:#E6EDF3;
+      --muted:#8B949E;
+      --accent:#58A6FF;
+      --accent-soft:#1F6FEB1A;
+      --accent-dark:#388BFD;
+    }
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -153,9 +167,72 @@
     display:inline-block;
   }
   .btn-primary{background:var(--accent); color:#fff;}
-  .btn-primary:hover{background:#1c42b8; text-decoration:none;}
+  .btn-primary:hover{background:var(--accent-dark); text-decoration:none;}
   .btn-secondary{border:1px solid var(--border); color:var(--text);}
   .btn-secondary:hover{border-color:var(--accent); color:var(--accent); text-decoration:none;}
+
+  /* projects */
+  .project{
+    padding:20px;
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:8px;
+    margin-bottom:16px;
+    transition:border-color 0.2s;
+  }
+  .project:last-child{margin-bottom:0;}
+  .project:hover{border-color:var(--accent);}
+  .project h3{
+    font-size:15px;
+    font-weight:600;
+    margin:0 0 6px;
+  }
+  .project .meta{
+    font-size:12.5px;
+    color:var(--muted);
+    margin:0 0 10px;
+  }
+  .project p{
+    font-size:14px;
+    color:var(--text);
+    margin:0 0 12px;
+  }
+  .project p:last-child{margin-bottom:0;}
+  .project-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+  }
+  .project-tag{
+    font-size:12px;
+    background:var(--accent-soft);
+    color:var(--accent);
+    padding:3px 9px;
+    border-radius:10px;
+  }
+
+  /* articles */
+  .article{
+    padding:16px 0;
+    border-bottom:1px solid var(--border);
+  }
+  .article:last-child{border-bottom:none;}
+  .article h3{
+    font-size:15px;
+    font-weight:600;
+    margin:0 0 4px;
+  }
+  .article-link{
+    color:var(--accent);
+    text-decoration:none;
+    word-break:break-word;
+  }
+  .article-link:hover{text-decoration:underline;}
+  .article .meta{
+    font-size:13px;
+    color:var(--muted);
+    margin:6px 0 0;
+  }
 
   /* about */
   .about p{
@@ -330,8 +407,9 @@
       <ul id="navlist">
         <li><a href="#about" data-target="about">About</a></li>
         <li><a href="#skills" data-target="skills">Skills</a></li>
+        <li><a href="#projects" data-target="projects">Projects</a></li>
         <li><a href="#experience" data-target="experience">Experience</a></li>
-        <li><a href="#education" data-target="education">Education</a></li>
+        <li><a href="#articles" data-target="articles">Articles</a></li>
         <li><a href="#contact" data-target="contact">Contact</a></li>
       </ul>
     </nav>
@@ -387,6 +465,78 @@
     <p class="lang-line">Languages: Telugu (Native/Bilingual) · English (Professional Working)</p>
   </section>
 
+  <section id="projects">
+    <h2 class="section-title">Projects &amp; Work</h2>
+
+    <div class="project">
+      <h3>GitHub Actions CI/CD Automation Frameworks</h3>
+      <p class="meta">GitHub Enterprise · Reusable Workflows · Automation at Scale</p>
+      <p>
+        Designed and deployed enterprise-grade CI/CD workflow templates and composite actions
+        across GitHub Enterprise, enabling standardized build, test, and deployment patterns.
+        Implemented workflow governance, security scanning integration, and performance monitoring
+        to support hundreds of teams and repositories.
+      </p>
+      <div class="project-tags">
+        <span class="project-tag">GitHub Actions</span>
+        <span class="project-tag">Automation</span>
+        <span class="project-tag">CI/CD</span>
+        <span class="project-tag">GitHub Enterprise</span>
+      </div>
+    </div>
+
+    <div class="project">
+      <h3>Actions Runner Controller (ARC) Deployment on Kubernetes</h3>
+      <p class="meta">AWS EKS · Google GKE · GitOps · Helm</p>
+      <p>
+        Orchestrated GitOps-driven Actions Runner Controller deployments across Amazon EKS and
+        Google Kubernetes Engine clusters. Implemented autoscaling policies, ephemeral runner
+        provisioning, and observability patterns to reduce CI/CD latency and infrastructure costs
+        while maintaining security and compliance requirements.
+      </p>
+      <div class="project-tags">
+        <span class="project-tag">Kubernetes</span>
+        <span class="project-tag">ARC</span>
+        <span class="project-tag">AWS EKS</span>
+        <span class="project-tag">Google GKE</span>
+        <span class="project-tag">GitOps</span>
+      </div>
+    </div>
+
+    <div class="project">
+      <h3>Develocity Integration &amp; Build Performance Analysis</h3>
+      <p class="meta">Build Optimization · Developer Experience · Analytics</p>
+      <p>
+        Led integration of Develocity (Gradle Enterprise) across engineering organization to
+        provide build performance insights, failure diagnostics, and optimization recommendations.
+        Designed dashboards and reports to surface bottlenecks, reducing average build times by
+        identifying cache misses, flaky tests, and dependency graph inefficiencies.
+      </p>
+      <div class="project-tags">
+        <span class="project-tag">Develocity</span>
+        <span class="project-tag">Build Optimization</span>
+        <span class="project-tag">Analytics</span>
+        <span class="project-tag">Gradle</span>
+      </div>
+    </div>
+
+    <div class="project">
+      <h3>Vert.x Microservices Serverless Transformation</h3>
+      <p class="meta">Java · Vert.x · Cloud Functions · Scalability</p>
+      <p>
+        Migrated legacy monolithic Java applications to a serverless, event-driven architecture
+        using Vert.x-based cloud functions. Improved application scalability, reduced operational
+        overhead, and accelerated feature deployment cycles for financial services platform.
+      </p>
+      <div class="project-tags">
+        <span class="project-tag">Java</span>
+        <span class="project-tag">Vert.x</span>
+        <span class="project-tag">Serverless</span>
+        <span class="project-tag">Microservices</span>
+      </div>
+    </div>
+  </section>
+
   <section id="skills">
     <h2 class="section-title">Skills</h2>
 
@@ -433,9 +583,14 @@
     </div>
 
     <div class="skill-group">
-      <h3>Cloud</h3>
+      <h3>Cloud &amp; Infrastructure</h3>
       <div class="tag-row">
-        <span class="skill-tag">AWS</span>
+        <span class="skill-tag">AWS (EKS, EC2, S3, Lambda)</span>
+        <span class="skill-tag">Google Cloud (GKE, Compute Engine)</span>
+        <span class="skill-tag">Kubernetes (k8s)</span>
+        <span class="skill-tag">Actions Runner Controller (ARC)</span>
+        <span class="skill-tag">Container Orchestration</span>
+        <span class="skill-tag">Infrastructure as Code</span>
       </div>
     </div>
 
@@ -460,10 +615,12 @@
       <div class="company"><a href="https://www.americanexpress.com/" target="_blank" rel="noopener">American Express</a></div>
       <p class="dates">Phoenix, AZ · Oct 2021 — Present</p>
       <p class="note">
-        Drive product upgrades for GitHub Enterprise and Develocity, exploring AI-assisted
-        automation to streamline upgrade cycles. Implement use cases defined with senior and staff
-        engineers, leveraging GitHub Copilot to improve delivery speed and quality, and collaborate
-        cross-functionally on continuous improvement and AI-driven engineering practices.
+        Drive product upgrades for GitHub Enterprise and Develocity across the organization,
+        exploring AI-assisted automation to streamline upgrade cycles and reduce deployment risk.
+        Implement use cases defined with senior and staff engineers, leveraging GitHub Copilot to
+        improve delivery speed and code quality. Collaborate cross-functionally with platform teams
+        to establish CI/CD best practices, GitOps patterns, and automation frameworks supporting
+        engineering velocity at scale.
       </p>
     </div>
 
@@ -526,7 +683,46 @@
     </div>
   </section>
 
-  <section id="education">
+  <section id="articles">
+    <h2 class="section-title">Articles &amp; Writing</h2>
+    <p style="color:var(--muted); margin:0 0 16px; font-size:14px;">
+      Technical writing on DevOps, CI/CD automation, AI-assisted development, and software engineering best practices.
+    </p>
+
+    <div class="article">
+      <h3>GitHub Actions for Enterprise Automation</h3>
+      <p class="meta">Workflow patterns, best practices, and governance strategies for scaling CI/CD workflows across teams.</p>
+      <a href="https://github.com/ajaychinthapalli" class="article-link" target="_blank" rel="noopener">
+        github.com/ajaychinthapalli →
+      </a>
+    </div>
+
+    <div class="article">
+      <h3>Deploying Actions Runner Controller on Kubernetes</h3>
+      <p class="meta">Hands-on guide to GitOps-driven ARC deployment, autoscaling, and observability on AWS EKS and Google GKE.</p>
+      <a href="https://github.com/ajaychinthapalli" class="article-link" target="_blank" rel="noopener">
+        github.com/ajaychinthapalli →
+      </a>
+    </div>
+
+    <div class="article">
+      <h3>AI-Assisted DevOps with GitHub Copilot</h3>
+      <p class="meta">Integration patterns for LLM-based tools to accelerate infrastructure automation and troubleshooting.</p>
+      <a href="https://github.com/ajaychinthapalli" class="article-link" target="_blank" rel="noopener">
+        github.com/ajaychinthapalli →
+      </a>
+    </div>
+
+    <div class="article">
+      <h3>Build Performance Optimization with Develocity</h3>
+      <p class="meta">Analyzing and reducing build time bottlenecks using build cache, parallel execution, and dependency graphs.</p>
+      <a href="https://github.com/ajaychinthapalli" class="article-link" target="_blank" rel="noopener">
+        github.com/ajaychinthapalli →
+      </a>
+    </div>
+  </section>
+
+  <section id="education" style="display:none;">
     <h2 class="section-title">Education</h2>
 
     <div class="edu">
